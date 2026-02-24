@@ -30,9 +30,27 @@ calculateCount();
 
 
 
+//This is for (suppose i first click interview in a card its status will change then i togoole to check it in the interview section find there and then click rejected btn status will show rejected but if i click all btn it will show first click i mean first status ..So the problem solve here)
+function updateAllSectionStatus(companyName, newStatus) {
+    const allCards = allCardSection.querySelectorAll('.space-y-6');
+
+    allCards.forEach(card => {
+        const name = card.querySelector('.companyName').innerText;
+
+        if (name === companyName) {
+            card.querySelector('.status').innerText = newStatus;
+        }
+    });
+}
+
+
+
 
 
 function toggleStyle(id){
+    
+    currentStatus = id;
+
       allFilterBtn.classList.remove('bg-blue-500','text-white');
     interviewFilterBtn.classList.remove('bg-blue-500','text-white');
     rejectedFilterBtn.classList.remove('bg-blue-500','text-white');
