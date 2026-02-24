@@ -21,3 +21,21 @@ function calculateCount() {
     rejectedCount.innerText = rejectedList.length;
 }
 calculateCount();
+
+
+
+
+
+function toggleStyle(id){
+      allFilterBtn.classList.remove('bg-blue-500','text-white');
+    interviewFilterBtn.classList.remove('bg-blue-500','text-white');
+    rejectedFilterBtn.classList.remove('bg-blue-500','text-white');
+
+    allFilterBtn.classList.add('bg-gray-300','text-black');
+    interviewFilterBtn.classList.add('bg-gray-300','text-black');
+    rejectedFilterBtn.classList.add('bg-gray-300','text-black');
+
+    const selected = document.getElementById(id);
+    selected.classList.remove('bg-gray-300','text-black');
+    selected.classList.add('bg-blue-500','text-white');
+}
