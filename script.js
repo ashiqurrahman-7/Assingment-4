@@ -181,3 +181,50 @@ function renderInterview(){
         filterSection.appendChild(div);
     });
 }
+
+
+//This is our rejected rendering phase 
+function renderRejected(){
+    filterSection.innerHTML = '';
+
+   
+    if(rejectedList.length === 0){
+        emptyState.classList.remove('hidden');
+        filterSection.appendChild(emptyState);
+        return;
+    } else {
+        emptyState.classList.add('hidden');
+    }
+   
+
+    rejectedList.forEach(rejected => {
+
+        let div = document.createElement('div');
+        div.className = 'space-y-6  border-gray-400 shadow-xl hover:shadow-2xl transition duration-300 rounded-2xl  mb-6';
+
+        div.innerHTML = `
+           <div class="space-y-6  p-8">
+                    <div class="flex justify-between">
+                        <div class="space-y-2">
+                        <p class="text-2xl companyName ">${rejected.companyName}</p>
+                        <p class="position">${rejected.position}</p>
+                    </div> 
+                    <div class="delete-card-btn"><i class="fa-solid fa-trash"></i></div>
+                    </div>
+                    <div class="flex gap-3 ">
+                        <p class="address">${rejected.address}</p>
+                        <p class="jobSchedule">${rejected.jobSchedule}</p>
+                        <p class="salary">${rejected.salary}</p>
+                    </div>
+                    <p class="status">${rejected.status}</p>
+                    <p class="notes">${rejected.notes}</p>
+                    <button class="interview-btn border border-green-400 text-green-400 font-bold px-4 py-2 hover:bg-green-400 hover:text-white transition duration-300 rounded">INTERVIEW</button>
+
+                         <button class="rejected-btn border border-red-400 text-red-400 font-bold px-4 py-2 hover:bg-red-400 hover:text-white transition duration-300"> REJECTED</button>
+                    
+                </div>
+        `;
+
+        filterSection.appendChild(div);
+    });
+}
