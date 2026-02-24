@@ -18,6 +18,8 @@ const filterSection = document.getElementById('filtered-section');
 const mainContainer = document.querySelector('main');
 
 
+const emptyState = document.getElementById('emptyState');
+
 function calculateCount() {
     total.innerText = allCardSection.children.length;
     totalJob.innerText = allCardSection.children.length;
@@ -42,6 +44,23 @@ function toggleStyle(id){
     const selected = document.getElementById(id);
     selected.classList.remove('bg-gray-300','text-black');
     selected.classList.add('bg-blue-500','text-white');
+
+
+
+        if (id === 'interview-filter-btn') {
+        allCardSection.classList.add('hidden');
+        filterSection.classList.remove('hidden');
+        renderInterview();
+    }
+    else if (id === 'rejected-filter-btn') {
+        allCardSection.classList.add('hidden');
+        filterSection.classList.remove('hidden');
+        renderRejected();
+    }
+    else {
+        allCardSection.classList.remove('hidden');
+        filterSection.classList.add('hidden');
+    }
 }
 
 
@@ -128,7 +147,43 @@ mainContainer.addEventListener('click', function(event){
 
         calculateCount();
     }
-})
+
+
+
+
+
+     ///Delete functionality when someone click delete button it will remove
+     if (event.target.closest('.delete-card-btn')) {
+
+    const parentNode = event.target.closest('.space-y-6');
+    const companyName = parentNode.querySelector('.companyName').innerText;
+
+    // Remove from data lists (important ⭐)
+    interviewList = interviewList.filter(item => item.companyName !== companyName);
+    rejectedList = rejectedList.filter(item => item.companyName !== companyName);
+
+    // Remove from allCards section also if exists
+    const allCards = allCardSection.querySelectorAll('.space-y-6');
+    allCards.forEach(card => {
+        const name = card.querySelector('.companyName').innerText;
+        if(name === companyName){
+            card.remove();
+        }
+    });
+
+    // Re-render filtered view if needed
+    if (currentStatus === 'interview-filter-btn') {
+        renderInterview();
+    }
+    else if (currentStatus === 'rejected-filter-btn') {
+        renderRejected();
+    }
+
+    calculateCount();
+}
+
+});
+
 
 
 
