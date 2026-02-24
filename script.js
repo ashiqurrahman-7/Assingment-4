@@ -176,7 +176,7 @@ mainContainer.addEventListener('click', function(event){
     const parentNode = event.target.closest('.space-y-6');
     const companyName = parentNode.querySelector('.companyName').innerText;
 
-    // Remove from data lists (important ⭐)
+    
     interviewList = interviewList.filter(item => item.companyName !== companyName);
     rejectedList = rejectedList.filter(item => item.companyName !== companyName);
 
@@ -235,7 +235,9 @@ function renderInterview(){
                         <p class="text-2xl companyName ">${interview.companyName}</p>
                         <p class="position">${interview.position}</p>
                     </div> 
-                    <div class="delete-card-btn"><i class="fa-solid fa-trash"></i></div>
+                     <div class="delete-card-btn transition duration-300 ease-in-out transform hover:scale-110 hover:text-red-500 cursor-pointer">
+                        <i class="fa-solid fa-trash"></i>
+                    </div>
                     </div>
                     <div class="flex gap-3 ">
                         <p class="address">${interview.address}</p>
@@ -282,7 +284,9 @@ function renderRejected(){
                         <p class="text-2xl companyName ">${rejected.companyName}</p>
                         <p class="position">${rejected.position}</p>
                     </div> 
-                    <div class="delete-card-btn"><i class="fa-solid fa-trash"></i></div>
+                     <div class="delete-card-btn transition duration-300 ease-in-out transform hover:scale-110 hover:text-red-500 cursor-pointer">
+                        <i class="fa-solid fa-trash"></i>
+                    </div>
                     </div>
                     <div class="flex gap-3 ">
                         <p class="address">${rejected.address}</p>
